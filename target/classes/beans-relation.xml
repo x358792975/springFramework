@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="address" class="com.selflearning.spring.test.sample2.autowire.Address"
+		p:city="Jercy City" p:street="Main Street" ></bean>
+
+	<!-- inheritance of beans -->
+	<bean id="address2"  p:city="New York" parent="address"></bean>
+	
+	<bean id="car" class="com.selflearning.spring.test.sample2.autowire.Car"
+		p:brand="Audi" p:price="65000"
+	></bean>
+	
+	<!-- Requirement:
+			Car Not NUll
+			which means the person bean depends on a car bean -->
+	<bean id="person" class="com.selflearning.spring.test.sample2.autowire.Person"
+		p:name="Sean" p:address-ref="address" p:car-ref="car" depends-on="car"
+		></bean>
+	
+</beans>
+	
